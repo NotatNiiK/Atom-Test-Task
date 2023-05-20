@@ -1,16 +1,15 @@
 <template>
-  <main class="main py-12">
+  <main class="main pt-12 pb-2 px-3">
     <div class="main__tip" :class="{'active-tip': isTipActive}">
       Доступний наступний урок!
     </div>
     <div class="main__container py-3">
       <h1 class="main__title text-3xl font-bold text-white uppercase mb-5">Atom-Test-Task</h1>
       <div class="main__lessons lessons">
-        <div class="lessons__body flex justify-between">
-          <div class="lessons__video">
+        <div class="lessons__body block lg:flex justify-between">
+          <div class="lessons__video mb-4">
             <div class="lessons__lesson h-80" v-if="currentLesson">
               <video :src="currentLesson.video_url" ref="videoPlayer" @play="startTimer" @pause="stopTimer" controls></video>
-              <h1>{{ currentTime }}</h1>
             </div>
             <div class="lesson__title text-white font-bold uppercase text-2xl py-2 underline" v-if="currentLesson">{{ currentLesson.title }}</div>
           </div>
@@ -119,9 +118,23 @@
   .lessons__lesson {
     width: 560px;
   }
+
+  @media all and (max-width: 1024px) {
+    .lessons__lesson {
+        width: 100%;
+        margin-bottom: 30px;
+        height: auto;
+    }
+  }
   
   .sidebar {
     width: 420px;
+  }
+
+  @media all and (max-width: 1024px) {
+    .sidebar{
+      width: 100%;
+    }
   }
   
   .unavailable {
